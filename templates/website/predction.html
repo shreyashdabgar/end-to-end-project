@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <form action="/predction/" method="post" class="border p-4 rounded">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="MedInc">MedInc:</label>
+            <input type="number" step="any" id="MedInc" name="MedInc" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="HouseAge">HouseAge:</label>
+            <input type="number" step="any" id="HouseAge" name="HouseAge" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="AveRooms">AveRooms:</label>
+            <input type="number" step="any" id="AveRooms" name="AveRooms" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="AveBedrms">AveBedrms:</label>
+            <input type="number" step="any" id="AveBedrms" name="AveBedrms" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Population">Population:</label>
+            <input type="number" step="any" id="Population" name="Population" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="AveOccup">AveOccup:</label>
+            <input type="number" step="any" id="AveOccup" name="AveOccup" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Latitude">Latitude:</label>
+            <input type="number" step="any" id="Latitude" name="Latitude" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Longitude">Longitude:</label>
+            <input type="number" step="any" id="Longitude" name="Longitude" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="result" class="h1">Result:</label>
+            <input type="text" id="result" name="result" class="form-control form-control-lg" value="{{ result }}" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+    
+</div>
+
+<style>
+    .form-control:hover {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    .btn:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en" class="bg-dark text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register here</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: #343a40; /* Dark background */
+        color: white; /* White text */
+    }
+    .form-control {
+        background-color: #495057; /* Darker input background */
+        color: white; /* White text in inputs */
+    }
+    .form-control::placeholder {
+        color: #ced4da; /* Placeholder text color */
+    }
+    .alert-primary {
+        background-color: #007bff;
+        color: white;
+    }
+    a {
+        color: #17a2b8; /* Link color */
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mt-5">register page</h2>
+                <form action="/register/" method="post" class="mt-4">
+                    {% csrf_token %}
+
+{% comment %} this code is for showing massages  {% endcomment %}
+                    <div class="alert alert-primary" role="alert">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    {{ message }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                    </div>
+{% comment %}  {% endcomment %}
+
+                    <div class="form-group">
+                        <label for="first name ">first name:</label>
+                        <input type="text" id="firstname " name="firstname" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last name">last name:</label>
+                        <input type="text" id="lastname" name="lastname" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+
+                    <button type="submit" class="btn btn-primary btn-block">register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+
+{%block content%}
+
+    
+        <h1 class="card-text">{{ course.course_name }}</h1>
+        <h5 class="card-text">{{ course.course_description }}</h5>
+        <h5 class="card-text">price - {{ course.course_price }}₹</h5>
+    <br>
+
+<div class="course-description">
+    <h4>Course Overview</h2>
+    <p>{{ course.course_name }} is a systematic and disciplined approach to the design, development, testing, and maintenance of software systems. This course covers the application of engineering principles to software development, aiming to produce reliable, efficient, and maintainable software products. Key activities include requirements analysis, software design, coding, testing, and project management.</p>
+
+    <h4>Methodologies and Best Practices</h4>
+    <p>Learn about the use of methodologies and best practices to ensure structured and efficient software development. This includes exploring software development life cycle (SDLC) models such as Waterfall, Agile, and DevOps, which provide frameworks for planning, executing, and managing software projects.</p>
+
+    <h4>Skills and Tools</h4>
+    <p>Gain proficiency in various programming languages, tools, and technologies. Understand algorithms, data structures, and software architecture to create high-quality software solutions. Develop the ability to work collaboratively in teams, communicate effectively with stakeholders, and continuously learn and adapt to new technologies and industry trends.</p>
+
+    <h4>Impact and Innovation</h4>
+    <p>Discover how software engineering drives innovation and progress in the technology industry. Learn to create software that powers everything from everyday applications to complex systems that support businesses, healthcare, education, and more.</p>
+</div>
+
+{% endblock %}

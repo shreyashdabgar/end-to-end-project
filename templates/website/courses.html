@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ course page
+{% endblock %} 
+
+{% block content %}
+{% comment %} write content in content block {% endcomment %}
+
+    <div style="text-align: center;">
+        <h2> add course you want learn </h2>
+        <form action="/courses/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="course_name">Course Name:</label><br>
+            <input type="text" id="course_name" required name="course_name"><br><br>
+
+            <label for="course_price">course_price$:</label><br>
+            <input type="number" id="course_price" required name="course_price"><br><br>
+
+            <label for="course_date">course_date:</label><br>
+            <input type="date" id="course_date" required name="course_date"><br><br>
+
+            <label for="course batch student number">course course batch student numbers:</label><br>
+            <input type="number" id="course batch student numbers" required name="course_batch_student_numbers"><br><br>
+            
+            <label for="course_description">course_description:</label><br>
+            <input type="text" id="course_description" required name="course_description"><br><br>
+
+            <label for="course_image">Course Image:</label><br>
+            <input type="file" accept ="image/*" id="course_image" required name="course_image"><br><br>
+
+            <input class="btn btn-outline-success" type="submit" value="add course">
+        </form>
+    </div>
+
+
+
+    <table class="table table-dark table-hover">
+        <tr>
+            <th>Course Name</th>
+            <th>Course Price</th>
+            <th>Course Date</th>
+            <th>Batch Student Numbers</th>
+            <th>Course Description</th>
+            <th>action</th> 
+            
+        </tr>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.course_name }}</td>
+            <td>{{ course.course_price }}</td>
+            <td>{{ course.course_date }}</td>
+            <td>{{ course.course_batch_student_numbers }}</td>
+            <td>{{ course.course_description }}</td>
+            <td><a href= "/delete/{{course.id}}" class="btn btn-outline-danger">delete</a></td>
+            <td><a href= "/update/{{course.id}}"class="btn btn-outline-warning">update</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

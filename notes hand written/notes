@@ -1,0 +1,96 @@
+Sure, here are the steps to create a Django web app, written in a simple and easy-to-understand way:
+
+### Step 1: Install Django
+1. Open your command prompt or terminal.
+2. Type the following command to install Django:
+    ```
+    pip install django
+    ```
+
+### Step 2: Create a New Django Project
+1. Navigate to the directory where you want to create your project.
+2. Type the following command to create a new Django project:
+    ```
+    django-admin startproject myproject
+    ```
+    Replace `myproject` with the name you want for your project.
+
+### Step 3: Navigate to Your Project Directory
+1. Change your directory to the project directory:
+    ```
+    cd myproject
+    ```
+
+### Step 4: Create a New Django App
+1. Type the following command to create a new app within your project:
+    ```
+    python manage.py startapp myapp
+    ```
+    Replace `myapp` with the name you want for your app.
+
+### Step 5: Add Your App to the Project
+1. Open the `settings.py` file located in the `myproject` directory.
+2. Find the `INSTALLED_APPS` list and add your app name to it:
+    ```python
+    INSTALLED_APPS = [
+         ...
+         'myapp',
+    ]
+    ```
+
+### Step 6: Create a View
+1. Open the `views.py` file in your app directory (`myapp`).
+2. Add the following code to create a simple view:
+    ```python
+    from django.http import HttpResponse
+
+    def home(request):
+         return HttpResponse("Hello, world!")
+    ```
+
+### Step 7: Map the View to a URL
+1. Create a new file called `urls.py` in your app directory (`myapp`).
+2. Add the following code to map the view to a URL:
+    ```python
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+         path('', views.home, name='home'),
+    ]
+    ```
+
+### Step 8: Include the App URLs in the Project
+1. Open the `urls.py` file in the project directory (`myproject`).
+2. Add the following code to include the app URLs:
+    ```python
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+         path('admin/', admin.site.urls),
+         path('', include('myapp.urls')),
+    ]
+    ```
+
+### Step 9: Run the Development Server
+1. Type the following command to start the development server:
+    ```
+    python manage.py runserver
+    ```
+2. Open your web browser and go to `http://127.0.0.1:8000/` to see your web app.
+
+That's it! You've created a simple Django web app.
+
+### step 10 for creating login form and register for or USER PASSWORD AUTH  you have to follow this step 
+1. create one model and in it you have to apply foreign key(for user passwor)(user = models.ForeignKey(User, on_delete=models.SET_NULL, null = True)
+    )
+
+2. then you have to create login and register html form in templates folder
+ create one form in login.html and create one logic in views.py and cerate one url for rendering url in server 
+
+3. for register page you have to follow same ateps you take in login page cretaions and write a logic for register in views.py first of all check if method is == POST then get all fild data and ensure write same name which is write in html form id then write then create user object(user.objects.create) and intialize all same fields as you mentions in register field and then redirect it to same register page(always render and redirect aree both diffrent things)
+
+4. for logout you have to simple make logout logic and create ujrl path and paste it to html page where ever you want
+
+5. and add decorater call login required becuase no one should access page without login and register 

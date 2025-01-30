@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+update page 
+{% endblock %} 
+
+{% block content %}
+{% comment %} write content in content block {% endcomment %}
+
+    <div style="text-align: center;">
+        <h2> add course you want learn </h2>
+        <form action="/courses/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <label for="course_name">Course Name:</label><br>
+            <input type="text" value = "{{course.course_name}}" required name="course_name"><br><br>
+
+            <label for="course_price">course_price:</label><br>
+            <input type="number" value="{{ course.course_price }}" required name="course_price"><br><br>
+
+            <label for="course_date">course_date:</label><br>
+            <input type="date" vcalue = "{{ course.course_date }}" required name="course_date"><br><br>
+
+            <label for="course batch student number">course batch student numbers:</label><br>
+            <input type="number" value ="{{ course.course_batch_student_numbers }}" required name="course_batch_student_numbers"><br><br>
+             
+            <label for="course_description">course_description:</label><br>
+            <input type="text"value ="{{ course.course_description }}" required name="course_description"><br><br>
+
+            <label for="course_image">Course Image:</label><br>
+            <input type="file" accept ="image/*" id="course_image" required name="course_image"><br><br>
+            
+            <input type="submit" value="add course you want to learn">
+            
+        </form>
+    </div>  
+{% endblock %}
